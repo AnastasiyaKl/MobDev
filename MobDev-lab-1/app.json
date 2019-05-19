@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "MobDev-lab-1",
+    "slug": "MobDev-lab-1",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mandarinka.lab1"
+    },
+    "android": {
+      "package": "com.mandarinka.lab1"
+    },
+    "description": ""
+  }
+}
