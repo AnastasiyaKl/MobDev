@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Button, Alert} from 'react-native';
 import NumberInputs from '../fragments/NumberInputs';
 import Operations from '../fragments/Operations';
 import Result from '../fragments/Result';
+
+import {addItem} from "../services/ItemService";
+import { YellowBox } from 'react-native';
+
+YellowBox.ignoreWarnings(['Warning: Setting']);
 
 export default class MainScreen extends React.Component {
     constructor(props) {
@@ -23,23 +28,33 @@ export default class MainScreen extends React.Component {
     //     }
     // }
 
+    handleSubmit() {
+        if(this.state.result){
+            addItem(this.state.result);
+        }
+        Alert.alert(
+            'Info',
+            `Result ${this.state.result} saved successfully to database`
+        )
+    };
+
     resElement = (fv, sign, sv, res) => {
         return `${fv} ${sign} ${sv} = ${res}`
         // console.log(`${fv} ${sign} ${sv} = ${res}`)
     };
 
-    getResult = () => {
+    getResult(){
         let fv = Number(this.state.firstvalue);
         let sv = Number(this.state.secondvalue);
         let sign = this.state.sign;
         let res;
-        console.log('first val', fv);
-        console.log('second val', sv);
-        console.log('sign', sign);
+        // console.log('first val', fv);
+        // console.log('second val', sv);
+        // console.log('sign', sign);
 
         if (fv && sv && sign) {
             // console.log(fv + sv)
-            console.log(this.state);
+            // console.log(this.state);
             switch (sign) {
                 case '+':
                     res = fv + sv;
@@ -69,7 +84,9 @@ export default class MainScreen extends React.Component {
                     console.log('wrong input');
             }
 
-            console.log(this.state);
+            this.handleSubmit();
+
+            // console.log(this.state);
         }
     };
 
@@ -93,7 +110,7 @@ export default class MainScreen extends React.Component {
         return (
             <View style={styles.calccontainer}>
                 <View>
-                    <Text style={styles.header}>Lab 2</Text>
+                    <Text style={styles.header}>Lab 3</Text>
                     <Text style={styles.subheader}>Done by Anastasiya Kovalenko, IS-63, variant 9</Text>
                 </View>
                 <Result res={this.state.result}/>
@@ -109,6 +126,12 @@ export default class MainScreen extends React.Component {
                             <Text style={styles.operationText}>Result</Text>
                         </TouchableOpacity>
                     </View>
+                </View>
+                <View>
+                    <Button
+                        title="Check Database"
+                        onPress={() => this.props.navigation.navigate('Data')}
+                    />
                 </View>
             </View>
         )

@@ -1,8 +1,22 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, {Component} from 'react';
+import { StyleSheet, View, Platform, Button, Text } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import MainScreen from './screens/MainScreen';
+import SavedDataList from './screens/SavedDataList';
 import ApiKeys from './constants/APIKeys';
 import * as firebase from 'firebase';
+
+
+const AppNavigator = createStackNavigator(
+  {
+    MainScreen: {screen: MainScreen},
+    Data: {screen: SavedDataList},
+  },
+    {
+      initialRouteName: "MainScreen"
+    });
+
+const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   constructor(props){
@@ -14,13 +28,12 @@ export default class App extends React.Component {
     if(!firebase.apps.length){
       firebase.initializeApp(ApiKeys.FirebaseConfig);
     }
-  }
+  };
+
 
   render() {
     return (
-      <View style={styles.container}>
-        <MainScreen/>
-      </View>
+        <AppContainer/>
     );
   }
 }

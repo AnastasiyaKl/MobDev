@@ -18,7 +18,7 @@ export default class NumberInputs extends React.Component {
 
     submitinput = (e) => {
         this.props.childinput(e.nativeEvent.target, e.nativeEvent.text);
-        console.log('child', e)
+        // console.log('child', e)
     };
 
     render() {
