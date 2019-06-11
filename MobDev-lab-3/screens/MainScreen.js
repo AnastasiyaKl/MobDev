@@ -43,7 +43,8 @@ export default class MainScreen extends React.Component {
         // console.log(`${fv} ${sign} ${sv} = ${res}`)
     };
 
-    getResult(){
+    getResult = () =>{
+        // console.log(this.state);
         let fv = Number(this.state.firstvalue);
         let sv = Number(this.state.secondvalue);
         let sign = this.state.sign;
@@ -84,10 +85,14 @@ export default class MainScreen extends React.Component {
                     console.log('wrong input');
             }
 
-            this.handleSubmit();
-
             // console.log(this.state);
         }
+    };
+
+    async submitResult(){
+        await this.getResult();
+        this.handleSubmit();
+
     };
 
     inputhandler = (key, val) => {
@@ -122,7 +127,7 @@ export default class MainScreen extends React.Component {
                     <View style={styles.row}>
                         <TouchableOpacity
                             style={styles.resultbutton}
-                            onPress={this.getResult}>
+                            onPress={this.submitResult.bind(this)}>
                             <Text style={styles.operationText}>Result</Text>
                         </TouchableOpacity>
                     </View>

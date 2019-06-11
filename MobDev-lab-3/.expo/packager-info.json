@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://e6-5gg.oranzevaam2101.mobdev-lab-3.exp.direct",
+  "packagerNgrokUrl": "https://packager.e6-5gg.oranzevaam2101.mobdev-lab-3.exp.direct",
+  "ngrokPid": 10453
 }
